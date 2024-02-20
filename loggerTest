@@ -1,0 +1,30 @@
+// Import necessary classes from Nebula Logger Framework
+import nebula.logger.*;
+
+public class ContactCreator {
+
+    // Create a logger instance
+    private static final Logger logger = Logger.getLogger(ContactCreator.class);
+
+    public static void createContact(String name, String email, String phone) {
+        try {
+            // Attempt to create a contact record
+            Contact newContact = new Contact();
+            newContact.FirstName = name;
+            newContact.Email = email;
+            newContact.Phone = phone;
+            insert newContact;
+            
+            // Log success message with record ID
+            logger.info("Contact created successfully with ID: " + newContact.Id);
+        } catch (Exception e) {
+            // Log error message
+            logger.error("An error occurred while creating contact: " + e.getMessage());
+        } finally {
+            // Log a warning message indicating the completion of the operation
+            logger.warn("Operation completed, regardless of success or failure.");
+            // Save the log
+            logger.saveLog();
+        }
+    }
+}
