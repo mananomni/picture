@@ -1,0 +1,26 @@
+// Import necessary classes from Nebula Logger Framework
+import nebula.logger.*;
+
+public class MyLoggerExample {
+
+    // Create a logger instance
+    private static final Logger logger = Logger.getLogger(MyLoggerExample.class);
+
+    public static void myMethod() {
+        try {
+            // Perform some actions
+            Integer result = divide(10, 0);
+        } catch (Exception e) {
+            // Log an error with a custom message
+            logger.error("An error occurred: " + e.getMessage(), e);
+        }
+    }
+
+    public static Integer divide(Integer dividend, Integer divisor) {
+        // Log a debug message
+        logger.debug("Dividing " + dividend + " by " + divisor);
+        
+        // Perform division
+        return dividend / divisor;
+    }
+}
